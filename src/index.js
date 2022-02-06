@@ -3,10 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {combineReducers} from 'redux';
-import {각리듀서} from './기능별컴포넌트';
-
-export const rootReducer = combineReducers({각리듀서});
 
 ReactDOM.render(
 	<React.StrictMode>
