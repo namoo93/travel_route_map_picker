@@ -1,0 +1,16 @@
+{
+	"members": {
+		"user": {
+			"key": "string",
+			"id": "namoo",
+			"password": "qaz12345",
+			"e-mail": "",
+			"nickname": "",
+			"map-list": ["지도명01", "지도명02", "지도명03"],
+			"map-data": {
+				"지도명01": [{}, {}],
+				"지도명02": []
+			}
+		}
+	}
+}

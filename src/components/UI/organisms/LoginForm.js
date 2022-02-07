@@ -1,12 +1,9 @@
-import {useDispatch} from 'react-redux';
-import Titles from '../atoms/Titles';
 import InputForm from '../molecules/InputForm';
 
 const LoginForm = () => {
-	const dispatch = useDispatch();
 	return (
 		<div className="login_form">
-			<Titles />
+			<h3>로그인</h3>
 			<InputForm />
 		</div>
 	);
