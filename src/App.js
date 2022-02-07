@@ -13,7 +13,7 @@ function App() {
 		<Provider store={store}>
 			<div className="App">
 				<Login />
-				<MapMain />
+				{<MapMain />}
 			</div>
 		</Provider>
 	);

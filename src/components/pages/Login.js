@@ -6,8 +6,8 @@ const Login = () => {
 	return (
 		<div className="login">
 			<UserLogin />
-			<UserSignUp />
-			<UserMapList />
+			{<UserSignUp />}
+			{<UserMapList />}
 		</div>
 	);
 };
