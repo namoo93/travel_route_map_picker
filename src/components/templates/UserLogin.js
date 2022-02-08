@@ -3,6 +3,9 @@ import {useEffect, useState} from 'react';
 
 const UserLogin = ({setLogin, setSignup}) => {
 	const [members, setMembers] = useState([]);
+	const [inputId, setInputId] = useState('');
+	const [inputPassword, setInputPassword] = useState('');
+
 	useEffect(() => {
 		//서버에서 유저리스트 API 받아온뒤 유저객체값 변수에담기
 		//data.members[].user_id
@@ -13,30 +16,33 @@ const UserLogin = ({setLogin, setSignup}) => {
 		]; //test
 		setMembers(datamembers);
 	}, []);
-	let idpassword;
-	const userInput = (e) => {
-		const {name, value} = e.target;
-		let id, password;
-		if (name === 'user_id') {
-			id = members.filter((cur) => cur.user_id === value);
-		} else if (name === 'user_password') password = members.filter((cur) => cur.user_password === value);
-		if (id[0].user_password === password[0].user_password) idpassword = 1;
-	};
-	const inputHandler = () => {
-		console.log(idpassword);
-		// if (idpassword) {
-		// 	setLogin(true);
-		// } else {
-		// 	alert('잘못 입력하셨거나 없는 계정입니다.');
-		// }
+
+	const inputSubmit = () => {
+		if (inputId === '' || inputPassword === '') {
+			alert('이메일 아이디와 비밀번호를 입력해주세요');
+			return;
+		}
+		members.map((cur) => {
+			if (cur.user_id === inputId) {
+				if (cur.user_password === inputPassword) {
+					alert('로그인 성공!');
+					setLogin(true);
+				}
+			}
+		});
 	};
 	return (
 		<div className="user_login">
 			<h3>로그인</h3>
 			<div className="input_form border_bottom">
-				<input type="text" name="user_id" className="inputs user_id" onInput={(e) => userInput(e)} />
-				<input type="text" name="user_password" className="inputs user_password" onInput={(e) => userInput(e)} />
-				<button className="button_submit" onClick={inputHandler}>
+				<input type="text" name="user_id" className="inputs user_id" onInput={(e) => setInputId(e.target.value)} />
+				<input
+					type="text"
+					name="user_password"
+					className="inputs user_password"
+					onInput={(e) => setInputPassword(e.target.value)}
+				/>
+				<button className="button_submit" onClick={inputSubmit}>
 					LOGIN
 				</button>
 			</div>
