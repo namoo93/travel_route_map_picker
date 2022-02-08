@@ -1,16 +1,28 @@
 {
-	"members": {
-		"user": {
+	"members": [
+		{
 			"key": "string",
-			"id": "namoo",
-			"password": "qaz12345",
-			"e-mail": "",
-			"nickname": "",
-			"map-list": ["지도명01", "지도명02", "지도명03"],
-			"map-data": {
+			"user_id": "namu@tree.co.kr",
+			"user_password": "qaz12345",
+			"user_mail": "namu@tree.co.kr",
+			"user_nickname": "namoo",
+			"map_list": ["지도명01", "지도명02", "지도명03"],
+			"map_data": {
+				"지도명01": [{}, {}],
+				"지도명02": []
+			}
+		},
+		{
+			"key": "string",
+			"user_id": "namu@tree.co.kr",
+			"user_password": "qaz12345",
+			"user_mail": "namu@tree.co.kr",
+			"user_nickname": "namoo",
+			"map_list": ["지도명01", "지도명02", "지도명03"],
+			"map_data": {
 				"지도명01": [{}, {}],
 				"지도명02": []
 			}
 		}
-	}
+	]
 }
