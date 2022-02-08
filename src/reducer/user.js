@@ -11,9 +11,12 @@ export const usetitles = (titleSize, titleText) => {
 		},
 	};
 };
-
+const initialState = {
+	titleSize: 1,
+	titleText: '',
+};
 //리듀서
-export const setTitles = (state, action) => {
+export const setTitles = (state = initialState, action) => {
 	switch (action.type) {
 		case USETITLE:
 			return state; //로그인후 사용자 값을 받아와 적용
