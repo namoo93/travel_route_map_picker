@@ -1,6 +1,9 @@
 //템플릿 큰그림 이후, UI로 나중에 분화
+import {useEffect} from 'react';
 
-const UserLogin = () => {
+const UserLogin = ({setLogin, setSignup}) => {
+	useEffect(() => {}, []);
+
 	return (
 		<div className="user_login">
 			<h3>로그인</h3>

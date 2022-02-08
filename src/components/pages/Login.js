@@ -1,13 +1,15 @@
 import UserLogin from '../templates/UserLogin';
 import UserSignUp from '../templates/UserSignUp';
 import UserMapList from '../templates/UserMapList';
+import {useState} from 'react';
 
-const Login = () => {
+const Login = ({login, setLogin}) => {
+	const [signup, setSignup] = useState(false);
 	return (
 		<div className="login">
-			<UserLogin />
-			{<UserSignUp />}
-			{<UserMapList />}
+			<UserLogin setLogin={setLogin} setSignup={setSignup} />
+			{signup && <UserSignUp />}
+			{login && <UserMapList />}
 		</div>
 	);
 };
