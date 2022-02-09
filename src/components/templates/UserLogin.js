@@ -1,5 +1,6 @@
 //템플릿 큰그림 이후, UI로 나중에 분화
 import {useEffect, useState} from 'react';
+import Login from '../pages/Login';
 
 const UserLogin = ({setLogin, setSignup}) => {
 	const [members, setMembers] = useState([]);
@@ -22,12 +23,20 @@ const UserLogin = ({setLogin, setSignup}) => {
 			alert('이메일 아이디와 비밀번호를 입력해주세요');
 			return;
 		}
-		members.map((cur) => {
-			if (cur.user_id === inputId) {
-				if (cur.user_password === inputPassword) {
-					alert('로그인 성공!');
-					setLogin(true);
-				}
+		// members.map((cur) => {
+		// 	if (cur.user_id === inputId) {
+		// 		if (cur.user_password === inputPassword) {
+		// 			alert('로그인 성공!');
+		// 			setLogin(true);
+		// 		}
+		// 	}
+		// });
+		Login(inputId, inputPassword).then((res) => {
+			if (res.result) {
+				console.log('로그인 성공!');
+				setLogin(true);
+			} else {
+				alert(res.message);
 			}
 		});
 	};
