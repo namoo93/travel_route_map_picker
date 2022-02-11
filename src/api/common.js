@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const login = (id, password) => {
+export const accounts = (id, password) => {
 	return axios.post('url', {
 		id,
 		password,

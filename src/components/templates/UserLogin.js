@@ -1,6 +1,6 @@
 //템플릿 큰그림 이후, UI로 나중에 분화
 import {useEffect, useState} from 'react';
-import Login from '../pages/Login';
+import {accounts} from '../../api/common';
 
 const UserLogin = ({setLogin, setSignup}) => {
 	const [members, setMembers] = useState([]);
@@ -31,7 +31,7 @@ const UserLogin = ({setLogin, setSignup}) => {
 		// 		}
 		// 	}
 		// });
-		Login(inputId, inputPassword).then((res) => {
+		accounts(inputId, inputPassword).then((res) => {
 			if (res.result) {
 				console.log('로그인 성공!');
 				setLogin(true);
