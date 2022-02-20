@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 //리덕스 셋팅
 import {Provider} from 'react-redux';
