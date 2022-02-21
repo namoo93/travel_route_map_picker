@@ -1,20 +1,21 @@
+import React from 'react';
 import MapList from '../templates/MapList';
 import MapListDetails from '../templates/MapListDetails';
 import MapListEnter from '../templates/MapListEnter';
 import MapTargetList from '../templates/MapTargetList';
 
 const MapMain = () => {
-	return (
-		<div className="map_main">
-			<div className="map_kakao"></div>
+  return (
+    <div className="map_main">
+      <div className="map_kakao"></div>
 
-			<MapList />
-			<MapListDetails />
-			<MapListEnter />
+      <MapList />
+      <MapListDetails />
+      <MapListEnter />
 
-			{<MapTargetList />}
-		</div>
-	);
+      {<MapTargetList />}
+    </div>
+  );
 };
 
 export default MapMain;
