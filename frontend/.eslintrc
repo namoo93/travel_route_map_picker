@@ -3,5 +3,6 @@
     "browser": true,
     "es2020": true
   },
-  "extends": ["react-app", "prettier"]
+  "extends": ["react-app", "plugin:react-hooks/recommended", "plugin:import/recommended"],
+  "plugins": ["prettier"]
 }
