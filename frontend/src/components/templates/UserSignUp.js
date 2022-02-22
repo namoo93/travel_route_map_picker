@@ -1,21 +1,59 @@
 import React from 'react';
 
-const UserSignUp = () => {
+const UserSignUp = ({ setSignup }) => {
+  const onSubmitSignUp = async (e) => {
+    e.preventDefault();
+    try {
+      //가입 성공 이후 화면에서 사라지도록
+      setSignup(false);
+    } catch (error) {}
+  };
+  const onInputSignUp = (e) => {
+    const {
+      taget: { name, value },
+    } = e;
+  };
   return (
     <div className="user_login">
       <h3>회원 가입</h3>
+      <form onSubmit={onSubmitSignUp} className="input_form">
+        <input
+          autoFocus
+          type="email"
+          name="email"
+          placeholder="Email"
+          required
+          className="inputs user_id"
+          onInput={onInputSignUp}
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          required
+          className="inputs user_password"
+          onInput={onInputSignUp}
+        />
+        <input
+          type="nickname"
+          name="nickname"
+          placeholder="Nickname"
+          required
+          className="inputs user_nickname"
+          onInput={onInputSignUp}
+        />
+      </form>
       <div className="botton_box">
-        <strong>간편 로그인 계정 생성</strong>
-        <button className="buttons">카카오</button>
-        <button className="buttons">네이버</button>
-        <button className="buttons">구글</button>
+        {/* 개인정보 제공 동의 팝업 */}
+        <button className="buttons button_link">개인정보 제공 동의</button>
+
+        <label>
+          전체 동의 <input name="" value="" type="checkbox" />
+        </label>
+        <button type="submit" className="buttons">
+          로그인
+        </button>
       </div>
-      <div className="input_form border_bottom">
-        <input type="text" className="inputs user_id" onInput />
-        <input type="text" className="inputs user_password" onInput />
-        <input type="text" className="inputs user_nickname" onInput />
-      </div>
-      <button className="buttons button_link">- 개인정보 동의 -</button>
     </div>
   );
 };

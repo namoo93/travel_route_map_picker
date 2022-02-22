@@ -1,10 +1,11 @@
 {
-   "singleQuote": true,
-   "semi": true,
-   "trailingComma": "es5",
-   "tabWidth": 2,
-   "quoteProps": "as-needed",
-   "vueIndentScriptAndStyle": false,
-   "printWidth": 120,
-   "htmlWhitespaceSensitivity": "css"
+  "semi": true,
+  "trailingComma": "es5",
+  "tabWidth": 2,
+  "quoteProps": "as-needed",
+  "vueIndentScriptAndStyle": false,
+  "printWidth": 120,
+  "htmlWhitespaceSensitivity": "css",
+  "singleQuote": true,
+  "jsxSingleQuote": false
 }

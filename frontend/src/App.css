@@ -1,8 +1,17 @@
 * {
-	margin: 0;
-	padding: 0;
-	text-decoration: none;
-	list-style: none;
-	color: #333;
-	text-align: center;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  color: #333;
+  text-align: center;
+}
+.map_main {
+  display: flex;
+}
+.map_list {
+  width: 350px;
+  height: 100vh;
+  margin: -2px;
+  border: 1px solid red;
 }

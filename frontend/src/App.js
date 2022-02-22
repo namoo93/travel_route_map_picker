@@ -10,16 +10,14 @@ import MapMain from './components/pages/MapMain';
 const store = createStore(rootReducer);
 
 function App() {
-  const [login, setLogin] = useState(false);
+  // 리덕스로 뺀뒤 UserMapList 에서 제어
+  const [showMap, setShowMap] = useState(true);
   useEffect(() => {
-    console.log(login);
-  }, [login]);
+    console.log(showMap);
+  }, [showMap]);
   return (
     <Provider store={store}>
-      <div className="App">
-        <Login login={login} setLogin={setLogin} />
-        {login && <MapMain />}
-      </div>
+      <div className="App">{!showMap ? <Login /> : <MapMain />}</div>
     </Provider>
   );
 }
