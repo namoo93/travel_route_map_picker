@@ -1,7 +1,10 @@
 import { Sequelize, DataTypes } from "sequelize";
 import db from "../db";
+import { Guestbook } from "./guestbook";
+import { Member } from "./member";
+import { Recommend } from "./recommend";
 
-const Savemap = db.define(
+export const Savemap = db.define(
   "savemap",
   {
     idx: {
@@ -36,3 +39,10 @@ const Savemap = db.define(
   },
   { freezeTableName: true }
 );
+
+Savemap.belongsTo(Member, {
+  foreignKey: "idx",
+  onDelete: "cascade",
+});
+Savemap.hasMany(Guestbook);
+Savemap.hasMany(Recommend);
