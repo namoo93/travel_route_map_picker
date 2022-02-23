@@ -1,7 +1,9 @@
 import { Sequelize, DataTypes } from "sequelize";
 import db from "../db";
+import { Member } from "./member";
+import { Savemap } from "./savemap";
 
-const Recommend = db.define(
+export const Recommend = db.define(
   "recommend",
   {
     idx: {
@@ -14,11 +16,15 @@ const Recommend = db.define(
       unique: true,
       allowNull: false,
     },
-    savemap_idx: {
-      type: DataTypes.STRING,
-      unique: true,
-      allowNull: false,
-    },
   },
   { freezeTableName: true }
 );
+
+Recommend.belongsTo(Member, {
+  foreignKey: "idx",
+  onDelete: "cascade",
+});
+Recommend.belongsTo(Savemap, {
+  foreignKey: "idx",
+  onDelete: "cascade",
+});

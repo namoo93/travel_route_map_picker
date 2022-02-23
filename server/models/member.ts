@@ -1,5 +1,10 @@
 import { Model, Sequelize, DataTypes } from "sequelize";
-const sequelize = new Sequelize("mysql");
+import db from "../db";
+import { Guestbook } from "./guestbook";
+import { Recommend } from "./recommend";
+import { Savemap } from "./savemap";
+
+const sequelize = db;
 
 // export interface Member {
 //   idx: string;
@@ -30,5 +35,9 @@ export const Member = sequelize.define(
       allowNull: false,
     },
   },
-  { freezeTableName: true }
+  { freezeTableName: true, timestamps: true }
 );
+
+Member.hasMany(Guestbook);
+Member.hasMany(Recommend);
+Member.hasMany(Savemap);

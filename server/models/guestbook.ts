@@ -1,7 +1,9 @@
 import { Sequelize, DataTypes } from "sequelize";
 import db from "../db";
+import { Member } from "./member";
+import { Savemap } from "./savemap";
 
-const Guestbook = db.define(
+export const Guestbook = db.define(
   "guestbook",
   {
     idx: {
@@ -28,3 +30,10 @@ const Guestbook = db.define(
     freezeTableName: true,
   }
 );
+Guestbook.belongsTo(Member, {
+  foreignKey: "idx",
+  onDelete: "cascade",
+});
+Guestbook.belongsTo(Savemap, {
+  foreignKey: "idx",
+});

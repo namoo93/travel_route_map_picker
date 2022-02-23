@@ -9,15 +9,6 @@ app.use(express.json());
 app.use(cors({ origin: "*" }));
 app.use(express.urlencoded({ extended: true }));
 
-// try {
-//   (async () => {
-//     await db.authenticate();
-//   })();
-//   console.log(`ORM:mysql connected`);
-// } catch (e) {
-//   console.log(`DB not connected: ${e}`);
-// }
-
 import memberRouter from "./routes/member";
 app.use("/member", memberRouter);
 
@@ -25,10 +16,14 @@ app.get("/", (req, res) => {
   res.send("hello");
 });
 
-app.listen(PORT, () =>
+app.listen(PORT, async () => {
   console.log(`
 ############################
 🛡️ APP is listening on : ${PORT}🛡️
 ############################
-`)
-);
+`);
+  await db
+    .authenticate()
+    .then(() => console.log(`Connected ✅`))
+    .catch((e) => console.log(`❗ Disconnected : ${e}`));
+});
