@@ -30,6 +30,14 @@ const MapMain = () => {
         <div ref={container} className="map" style={{ width: '100vw', height: '100vh' }}></div>
       </div>
       <MapList />
+      {/* search box & 지도 이름 */}
+      <div className="map_top">
+        <strong className="map_title">01번 지도입니다.{}</strong>
+        <div className="search_box">
+          <input type="search" />
+          <button type="button">search</button>
+        </div>
+      </div>
 
       {/* 모달 */}
       {/* 최초 리스트 이름 생성 모달 */}
@@ -51,7 +59,7 @@ const MapMain = () => {
           <MapListEnter />
         </ModalPortal>
       )} */}
-      {<MapTargetList />}
+      {/* {<MapTargetList />} */}
     </div>
   );
 };
