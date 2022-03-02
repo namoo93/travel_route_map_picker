@@ -60,6 +60,7 @@
 }
 
 /* 모달 */
+/* 모달 외곽 위치 */
 .modal_container {
 }
 .modal_background {
@@ -82,6 +83,7 @@
   border-radius: 5px;
 }
 
+/* 이니셜 모달 */
 .initial_box {
   width: 400px;
   height: 200px;

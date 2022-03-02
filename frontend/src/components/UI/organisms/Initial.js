@@ -1,12 +1,12 @@
 import React, { useRef, useState } from 'react';
 
-const Initial = ({ setModalOpened }) => {
+const Initial = ({ setInitialModal }) => {
   const [titleValue, setTitleValue] = useState('');
   const intialRef = useRef(null);
   const onSubmitTitle = async (e) => {
     try {
       if (titleValue) {
-        setModalOpened(false);
+        setInitialModal(false);
         //서버에 타이틀값전송 서버 맵리스트에 추가
         console.log(titleValue);
       }
