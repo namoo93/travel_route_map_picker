@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import MapList from '../templates/MapList';
-import MapListDetails from '../templates/MapListDetails';
+import MapListAdd from '../templates/MapListAdd';
 import MapListEnter from '../templates/MapListEnter';
 import MapTargetList from '../templates/MapTargetList';
 import ModalPortal from '../templates/ModalPortal';
@@ -16,7 +16,11 @@ const options = {
 };
 
 const MapMain = () => {
+  //모달
+  const [initialModal, setInitialModal] = useState(true);
+  const [memoAddModal, setMemoAddModal] = useState(false);
   //카카오 지도
+  const [addrInMap, setAddrInMap] = useState(''); //주소값
   const container = useRef(null); //지도를 담을 영역의 DOM 레퍼런스
 
   useEffect(() => {
@@ -29,43 +33,27 @@ const MapMain = () => {
       // 좌표로 법정동 상세 주소 정보를 요청합니다
       geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
     }
-    // function searchAddrFromCoords(coords, callback) {
-    //   // 좌표로 행정동 주소 정보를 요청합니다
-    //   geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);
-    // }
-    // 지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수입니다
-    // function displayCenterInfo(result, status) {
-    //   if (status === window.kakao.maps.services.Status.OK) {
-    //     const infoDiv = document.getElementById('centerAddr');
-    //     for (let i = 0; i < result.length; i++) {
-    //       // 행정동의 region_type 값은 'H' 이므로
-    //       if (result[i].region_type === 'H') {
-    //         infoDiv.innerHTML = result[i].address_name;
-    //         break;
-    //       }
-    //     }
-    //   }
-    // }
-    // 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
-    //searchAddrFromCoords(maps.getCenter(), displayCenterInfo);
 
     // 클릭한 위치를 표시할 마커입니다
     const marker = new window.kakao.maps.Marker();
-    const infowindow = new window.kakao.maps.InfoWindow({ zindex: 1 });
+    const infowindow = new window.kakao.maps.InfoWindow();
 
     //지도 클릭시 마커와 상세 주소출력
     window.kakao.maps.event.addListener(maps, 'click', function (e) {
       console.log(e.latLng);
       //메모 상세 팝업
       //setMemoAddModal(true);
+
       searchDetailAddrFromCoords(e.latLng, function (result, status) {
         if (status === window.kakao.maps.services.Status.OK) {
-          let detailAddr = !!result[0].road_address
-            ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>'
-            : '';
-          detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
+          let detailAddr = !!result[0].road_address ? '도로명 주소:' + result[0].road_address.address_name : '';
+          detailAddr += ' 지번 주소:' + result[0].address.address_name;
+          console.log(detailAddr);
+          //결과 주소값 담기
+          setAddrInMap(detailAddr);
 
-          const content = '<div class="bAddr">' + '<span class="title">법정동 주소정보</span>' + detailAddr + '</div>';
+          //마커위의 인포윈도우
+          const content = '<div class="bAddr">' + detailAddr + '</div>';
 
           // 마커를 클릭한 위치에 표시합니다
           marker.setPosition(e.latLng);
@@ -83,9 +71,6 @@ const MapMain = () => {
     return maps;
   }, []);
 
-  //모달
-  const [initialModal, setInitialModal] = useState(true);
-  const [memoAddModal, setMemoAddModal] = useState(false);
   return (
     <div className="map_main" id="root_modal">
       <div className="map_kakao">
@@ -112,7 +97,7 @@ const MapMain = () => {
       {/* 메모상세 등록 팝업 */}
       {memoAddModal && (
         <ModalPortal setMemoAddModal={setMemoAddModal}>
-          <MapListDetails />
+          <MapListAdd addrInMap={addrInMap} />
         </ModalPortal>
       )}
       {/* 메모상세 팝업
