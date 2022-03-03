@@ -95,3 +95,11 @@
 .input_wrap > input {
   text-align: left;
 }
+
+.info_contents {
+  display: inline-block;
+  background-color: #0475f4;
+  border-radius: 10px;
+  font-size: 15px;
+  line-height: 2;
+}
