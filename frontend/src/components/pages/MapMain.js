@@ -27,7 +27,7 @@ const MapMain = () => {
   const [addrInMap, setAddrInMap] = useState(''); //주소값
   const container = useRef(null); //지도를 담을 영역의 DOM 레퍼런스
 
-  //
+  //인포컨텐츠 내용물
   const customInfoContent = `<div class="info_contents"> dsdsadadasda </div>`;
 
   useEffect(() => {
