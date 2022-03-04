@@ -49,12 +49,12 @@ const MapMain = () => {
     //지도 클릭시 마커와 상세 주소출력
     window.kakao.maps.event.addListener(maps, 'click', function (e) {
       //메모 상세 팝업
-      //setMemoAddModal(true);
+      setMemoAddModal(true);
 
       searchDetailAddrFromCoords(e.latLng, function (result, status) {
         if (status === window.kakao.maps.services.Status.OK) {
-          let detailAddr = !!result[0].road_address ? '도로명 주소:' + result[0].road_address.address_name : '';
-          detailAddr += ' 지번 주소:' + result[0].address.address_name;
+          let detailAddr = !!result[0].road_address ? `도로명 주소: ${result[0].road_address.address_name}` : '';
+          detailAddr += ` 지번 주소: ${result[0].address.address_name}`;
           //결과 주소값 담기
           setAddrInMap(detailAddr);
 
@@ -64,9 +64,6 @@ const MapMain = () => {
           // 마커를 클릭한 위치에 표시합니다
           marker.setPosition(e.latLng);
           marker.setMap(maps);
-
-          // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
-          // customInfo.getVisible(true);
         }
       });
 
