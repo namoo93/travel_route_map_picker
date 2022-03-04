@@ -6,6 +6,7 @@
   color: #333;
   text-align: center;
   border: none;
+  font-size: 13px;
 }
 /* 마진 클래스 & 패딩 클래스 */
 .mb_10 {
@@ -116,6 +117,11 @@
   width: 100%;
 }
 
+.input_wrap {
+  padding-bottom: 20px;
+  position: relative;
+}
+
 .input_wrap > input {
   width: calc(100% - 18px);
   display: inline-block;
@@ -123,6 +129,28 @@
   padding: 8px;
   border: 1px solid #0a5aaf;
   border-radius: 5px;
+  color: #333;
+}
+
+.input_label {
+  display: block;
+  font-weight: bold;
+  font-size: 12px;
+  text-align: left;
+  color: #0a5aaf9b;
+  word-break: keep-all;
+}
+
+.input_wrap > input::placeholder {
+  color: #0a5aaf42;
+  font-weight: bold;
+  text-overflow: ellipsis;
+}
+
+.input_wrap > input.input_underline {
+  border: none;
+  border-bottom: 1px solid #0a5aaf;
+  border-radius: 0;
 }
 
 .info_contents {
@@ -144,8 +172,31 @@
   background-color: #0475f4;
   border: 1px solid #0a5aaf;
   color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 1px;
   border-radius: 5px;
 }
 .w100 {
   width: 100%;
+}
+
+.button_label_img_add {
+  background-color: #0475f4;
+  padding: 8px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 13px;
+  position: absolute;
+  width: calc(100% - 18px);
+}
+
+.button_label_img_add > span {
+  display: inline-block;
+  width: 100%;
+  font-size: 12px;
+}
+
+.button_img_add {
+  opacity: 0;
 }
