@@ -42,18 +42,18 @@ const UserSignUp = ({ setSignup }) => {
           className="inputs user_nickname"
           onInput={onInputSignUp}
         />
-      </form>
-      <div className="botton_box">
-        {/* 개인정보 제공 동의 팝업 */}
-        <button className="buttons button_link">개인정보 제공 동의</button>
+        <div className="botton_box">
+          {/* 개인정보 제공 동의 팝업 */}
+          <button className="buttons button_link">개인정보 제공 동의</button>
 
-        <label>
-          전체 동의 <input name="" value="" type="checkbox" />
-        </label>
-        <button type="submit" className="buttons">
-          로그인
-        </button>
-      </div>
+          <label>
+            전체 동의 <input name="" value="" type="checkbox" />
+          </label>
+          <button type="submit" className="buttons">
+            로그인
+          </button>
+        </div>
+      </form>
     </div>
   );
 };

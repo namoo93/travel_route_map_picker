@@ -16,7 +16,7 @@ const Initial = ({ setInitialModal }) => {
     e.preventDefault();
   };
 
-  const onInputInitial = (e) => {
+  const onKeyDownInitial = (e) => {
     if (e.target.value !== '') {
       if (e.keyCode === 13) {
         setTitleValue(intialRef.current.value);
@@ -28,21 +28,20 @@ const Initial = ({ setInitialModal }) => {
   const onClickInitial = () => {
     if (intialRef.current.value !== '') {
       setTitleValue(intialRef.current.value);
-      intialRef.current.value = '';
       console.log(titleValue);
     }
   };
   return (
     <div className="initial_box">
-      <stron>새로운 장소명을 입력해주세요</stron>
-      <form onSubmit={onSubmitTitle}>
-        <div className="input_wrap">
-          <input type="text" name="title" autoFocus required onKeyDown={onInputInitial} ref={intialRef} />
+      <stron className="mb_10">새로운 장소명을 입력해주세요</stron>
+      <form onSubmit={onSubmitTitle} className="form_w100">
+        <div className="input_wrap mb_20">
+          <input type="text" name="title" autoFocus required onKeyDown={onKeyDownInitial} ref={intialRef} />
         </div>
+        <button type="submit" className="buttons w100" onClick={onClickInitial}>
+          만들기
+        </button>
       </form>
-      <button type="submit" onClick={onClickInitial}>
-        만들기
-      </button>
     </div>
   );
 };

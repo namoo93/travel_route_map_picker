@@ -59,19 +59,19 @@ const UserLogin = ({ login, setLogin, setSignup }) => {
           onInput={onInputLogin}
           value={attrValue.password}
         />
+        <div className="botton_box">
+          {/* 분실계정찾기 팝업 또는 페이지 */}
+          <button type="button" onClick={onClickSignUp} className="buttons button_link">
+            회원가입하기
+          </button>
+          <button type="button" className="buttons button_link">
+            분실계정찾기
+          </button>
+          <button type="submit" className="buttons">
+            로그인
+          </button>
+        </div>
       </form>
-      <div className="botton_box">
-        {/* 분실계정찾기 팝업 또는 페이지 */}
-        <button type="button" onClick={onClickSignUp} className="buttons button_link">
-          회원가입하기
-        </button>
-        <button type="button" className="buttons button_link">
-          분실계정찾기
-        </button>
-        <button type="submit" className="buttons">
-          로그인
-        </button>
-      </div>
     </div>
   );
 };

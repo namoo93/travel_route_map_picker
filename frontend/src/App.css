@@ -5,6 +5,14 @@
   list-style: none;
   color: #333;
   text-align: center;
+  border: none;
+}
+/* 마진 클래스 & 패딩 클래스 */
+.mb_10 {
+  margin-bottom: 10px;
+}
+.mb_20 {
+  margin-bottom: 20px;
 }
 .map_main {
   position: relative;
@@ -32,7 +40,6 @@
   top: 5%;
   left: 2%;
   z-index: 1;
-  width: 250px;
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.8);
   display: flex;
@@ -53,10 +60,15 @@
   display: flex;
   justify-content: space-between;
 }
-.search_box > input {
+.search_bar {
   text-align: left;
+  padding: 6px;
+  border: 1px solid #0a5aaf;
+  border-radius: 5px;
+  margin-right: 5px;
 }
-.search_box > button {
+.search_box > .buttons {
+  padding: 6px;
 }
 
 /* 모달 */
@@ -86,14 +98,31 @@
 /* 이니셜 모달 */
 .initial_box {
   width: 400px;
-  height: 200px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  padding: 20px;
+}
+
+/* 메모상세 모달 */
+.modal_memo_wrap {
+  width: 60vw;
+  max-width: 800px;
+  padding: 30px;
+}
+
+.form_w100 {
+  width: 100%;
 }
 
 .input_wrap > input {
+  width: calc(100% - 18px);
+  display: inline-block;
   text-align: left;
+  padding: 8px;
+  border: 1px solid #0a5aaf;
+  border-radius: 5px;
 }
 
 .info_contents {
@@ -106,4 +135,17 @@
   font-size: 15px;
   line-height: 2;
   padding: 3px 15px;
+}
+
+/* 버튼 */
+.buttons {
+  padding: 8px;
+  display: inline-block;
+  background-color: #0475f4;
+  border: 1px solid #0a5aaf;
+  color: #fff;
+  border-radius: 5px;
+}
+.w100 {
+  width: 100%;
 }

@@ -23,13 +23,13 @@ const MapMain = () => {
   //모달
   const [initialModal, setInitialModal] = useState(true);
   const [memoAddModal, setMemoAddModal] = useState(false);
-  const [memoContents, setMemoContents] = useState(`&nbsp;`);
+  const [memoContents, setMemoContents] = useState([`&nbsp;`]);
   //카카오 지도
-  const [addrInMap, setAddrInMap] = useState(''); //주소값
+  const [placeInfo, setPlaceInfo] = useState([]); //장소 데이터
   const container = useRef(null); //지도를 담을 영역의 DOM 레퍼런스
 
   //인포컨텐츠 내용물
-  const customInfoContent = `<div class="info_contents">${memoContents}</div>`;
+  const customInfoContent = `<div class="info_contents">${memoContents[0]}</div>`;
 
   useEffect(() => {
     const maps = new window.kakao.maps.Map(container.current, mapOptions); //지도 생성 및 객체 리턴
@@ -53,10 +53,11 @@ const MapMain = () => {
 
       searchDetailAddrFromCoords(e.latLng, function (result, status) {
         if (status === window.kakao.maps.services.Status.OK) {
+          //주소값으로 해당 장소의 데이터 불러오기
           let detailAddr = !!result[0].road_address ? `도로명 주소: ${result[0].road_address.address_name}` : '';
           detailAddr += ` 지번 주소: ${result[0].address.address_name}`;
-          //결과 주소값 담기
-          setAddrInMap(detailAddr);
+          //결과 장소의 데이터 담기
+          setPlaceInfo(detailAddr);
 
           //마커위의 인포윈도우
           customInfo.setPosition(e.latLng);
@@ -83,8 +84,10 @@ const MapMain = () => {
       <div className="map_top">
         <strong className="map_title">01번 지도입니다.{}</strong>
         <div className="search_box">
-          <input type="search" />
-          <button type="button">search</button>
+          <input type="search" className="search_bar" />
+          <button type="button" className="buttons">
+            search
+          </button>
         </div>
       </div>
 
@@ -99,7 +102,7 @@ const MapMain = () => {
       {/* 메모상세 등록 팝업 */}
       {memoAddModal && (
         <ModalPortal setMemoAddModal={setMemoAddModal}>
-          <MapListAdd addrInMap={addrInMap} />
+          <MapListAdd placeInfo={placeInfo} setMemoAddModal={setMemoAddModal} setMemoContents={setMemoContents} />
         </ModalPortal>
       )}
       {/* 메모상세 팝업
