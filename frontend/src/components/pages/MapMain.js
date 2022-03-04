@@ -16,19 +16,20 @@ const mapOptions = {
 };
 const markerOptions = {
   //지도 마커 옵션
-  image: new window.kakao.maps.MarkerImage('/img/Polygon_2.png', new window.kakao.maps.Size(16, 16)),
+  image: new window.kakao.maps.MarkerImage('/img/marker.png', new window.kakao.maps.Size(8, 8)),
 };
 
 const MapMain = () => {
   //모달
   const [initialModal, setInitialModal] = useState(true);
   const [memoAddModal, setMemoAddModal] = useState(false);
+  const [memoContents, setMemoContents] = useState(`&nbsp;`);
   //카카오 지도
   const [addrInMap, setAddrInMap] = useState(''); //주소값
   const container = useRef(null); //지도를 담을 영역의 DOM 레퍼런스
 
   //인포컨텐츠 내용물
-  const customInfoContent = `<div class="info_contents"> dsdsadadasda </div>`;
+  const customInfoContent = `<div class="info_contents">${memoContents}</div>`;
 
   useEffect(() => {
     const maps = new window.kakao.maps.Map(container.current, mapOptions); //지도 생성 및 객체 리턴
@@ -43,9 +44,7 @@ const MapMain = () => {
 
     // 클릭한 위치를 표시할 마커입니다
     const marker = new window.kakao.maps.Marker(markerOptions);
-    const customInfo = new window.kakao.maps.CustomOverlay({
-      content: customInfoContent,
-    });
+    const customInfo = new window.kakao.maps.CustomOverlay({ map: maps, content: customInfoContent });
 
     //지도 클릭시 마커와 상세 주소출력
     window.kakao.maps.event.addListener(maps, 'click', function (e) {
