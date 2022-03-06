@@ -132,6 +132,15 @@
   color: #333;
 }
 
+.input_wrap > textarea {
+  resize: none;
+  width: calc(100% - 12px);
+  height: 300px;
+  text-align: left;
+  padding: 5px;
+  border: 1px solid #0a5aaf;
+}
+
 .input_label {
   display: block;
   font-weight: bold;
@@ -199,4 +208,25 @@
 
 .button_img_add {
   opacity: 0;
+  margin-bottom: 10px;
+}
+
+.file_preview {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.file_preview > li {
+  margin-top: 5px;
+  margin-right: 5px;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+}
+.file_preview > li > img {
+  width: 100%;
+  background-size: cover;
+}
+.file_preview > li:last-child {
+  margin-right: 0;
 }
