@@ -72,7 +72,7 @@ const MapListAdd = ({ placeInfo, setMemoAddModal, setMemoContents }) => {
             {/* 이미지 등록시 미리보기 제공 */}
             {images.map((cur, idx) => (
               <li key={idx}>
-                <img src={cur} />
+                <img src={cur} alt="미리보기 이미지" />
               </li>
             ))}
           </ol>
