@@ -135,7 +135,7 @@
 .input_wrap > textarea {
   resize: none;
   width: calc(100% - 12px);
-  height: 300px;
+  height: 200px;
   text-align: left;
   padding: 5px;
   border: 1px solid #0a5aaf;
@@ -209,6 +209,12 @@
 .button_img_add {
   opacity: 0;
   margin-bottom: 10px;
+}
+
+/* 이미지 미리보기 */
+.file_preview_wrap {
+  overflow-y: scroll;
+  max-height: 120px;
 }
 
 .file_preview {

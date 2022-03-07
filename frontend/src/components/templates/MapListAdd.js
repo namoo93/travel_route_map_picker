@@ -4,11 +4,16 @@ import savemap from '../../api/savemap';
 
 const MapListAdd = ({ placeInfo, setMemoAddModal, setMemoContents }) => {
   const [images, setImages] = useState([]);
+  const [memoText, setMemoText] = useState('');
+  const [titleText, setTitleText] = useState('');
   //모든 필수 데이터 입력시 버튼 활성화
   const [disabled, setDisabled] = useState(true);
   //마커의 미리보기 데이터 셋팅 setMemoContents() // 배열안의 객체로 설정
 
-  useEffect(() => {}, [images]);
+  useEffect(() => {
+    //저장 버튼 활성화
+    if (memoText.length && titleText.length) setDisabled(false);
+  }, [images, memoText, titleText]);
 
   const onSubmitAddMemo = (e) => {
     e.preventDefault();
@@ -17,15 +22,25 @@ const MapListAdd = ({ placeInfo, setMemoAddModal, setMemoContents }) => {
     const formdata = new FormData();
   };
 
-  const onKeyDownTitle = () => {};
+  const onChangeMemoText = (e) => {
+    const {
+      target: { value, name },
+    } = e;
+
+    if (name === 'title') {
+      setTitleText(value);
+    } else if (name === 'memo') {
+      setMemoText(value);
+    }
+  };
 
   const onLoadFiles = (e) => {
     const {
       target: { files },
     } = e;
 
+    // 이미지 미리보기
     const filesUrlList = Object.values(files).map((cur) => URL.createObjectURL(cur));
-
     setImages(filesUrlList);
   };
 
@@ -49,7 +64,7 @@ const MapListAdd = ({ placeInfo, setMemoAddModal, setMemoContents }) => {
             className="input_underline"
             autoFocus
             required
-            onKeyDown={onKeyDownTitle}
+            onChange={onChangeMemoText}
             placeholder="이곳의 이름 또는 특징을 입력해주세요"
           />
         </div>
@@ -68,18 +83,20 @@ const MapListAdd = ({ placeInfo, setMemoAddModal, setMemoContents }) => {
             multiple
             onChange={onLoadFiles}
           />
-          <ol className="file_preview">
-            {/* 이미지 등록시 미리보기 제공 */}
-            {images.map((cur, idx) => (
-              <li key={idx}>
-                <img src={cur} alt="미리보기 이미지" />
-              </li>
-            ))}
-          </ol>
+          <div className="file_preview_wrap">
+            <ol className="file_preview">
+              {/* 이미지 등록시 미리보기 제공 */}
+              {images.map((cur, idx) => (
+                <li key={idx}>
+                  <img src={cur} alt="미리보기 이미지" />
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
         <div className="input_wrap">
           {/* 글 컨텐츠 & 장소 정보 가져온것 */}
-          <textarea placeholder="하고싶은 말이나 설명을 적어주세요~"></textarea>
+          <textarea placeholder="하고싶은 말이나 설명을 적어주세요~" name="memo" onChange={onChangeMemoText}></textarea>
           <div>{placeInfo}</div>
         </div>
         <button type="submit" className="buttons w100" onClick={onClickAddMemo} disabled={disabled}>

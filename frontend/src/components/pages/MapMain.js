@@ -56,8 +56,10 @@ const MapMain = () => {
           //주소값으로 해당 장소의 데이터 불러오기
           let detailAddr = !!result[0].road_address ? `도로명 주소: ${result[0].road_address.address_name}` : '';
           detailAddr += ` 지번 주소: ${result[0].address.address_name}`;
+          console.log(result);
+
           //결과 장소의 데이터 담기
-          setPlaceInfo(detailAddr);
+          setPlaceInfo();
 
           //마커위의 인포윈도우
           customInfo.setPosition(e.latLng);
