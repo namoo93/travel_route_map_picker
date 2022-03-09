@@ -32,7 +32,7 @@
   height: 100vh;
   margin: -2px;
   background-color: #fff;
-  border: 1px solid #eee;
+  border: 1px solid #0a5aaf42;
 }
 
 /* 지도 타이틀 */
@@ -47,6 +47,7 @@
   flex-direction: column;
   justify-content: center;
   padding: 8px 0;
+  border: 1px solid #0a5aaf42;
 }
 .map_title {
   padding: 4px 15px;
@@ -111,6 +112,7 @@
   width: 60vw;
   max-width: 800px;
   padding: 30px;
+  border: 1px solid #0a5aaf42;
 }
 
 .form_w100 {
@@ -141,7 +143,47 @@
   border: 1px solid #0a5aaf;
 }
 
-.input_label {
+.place_select {
+  width: calc(100% - 18px);
+  height: 260px;
+  overflow-y: scroll;
+  padding: 8px;
+  border: 1px solid #0a5aaf;
+  /* border-radius: 5px; */
+}
+
+.place_select .select_option {
+  width: calc(100% - 10px);
+  text-align: left;
+  display: inline-block;
+  padding: 5px;
+  border-bottom: 1px solid #0a5aaf;
+  cursor: pointer;
+}
+.place_select .select_option.on {
+  background-color: #0a5aaf2d;
+}
+
+.select_option > span {
+  text-align: left;
+  display: block;
+  font-size: 13px;
+  color: #555;
+}
+.select_option > .place_name {
+  font-size: 14px;
+  font-weight: bold;
+}
+.select_option > .category_name {
+  font-size: 11px;
+  opacity: 0.5;
+}
+
+.select_option > .place_url {
+  color: #0475f4;
+}
+
+.input_wrap .input_label {
   display: block;
   font-weight: bold;
   font-size: 12px;
@@ -150,7 +192,8 @@
   word-break: keep-all;
 }
 
-.input_wrap > input::placeholder {
+.input_wrap > input::placeholder,
+textarea::placeholder {
   color: #0a5aaf42;
   font-weight: bold;
   text-overflow: ellipsis;
@@ -176,15 +219,21 @@
 
 /* 버튼 */
 .buttons {
+  cursor: pointer;
   padding: 8px;
   display: inline-block;
   background-color: #0475f4;
   border: 1px solid #0a5aaf;
   color: #fff;
   font-size: 14px;
-  font-weight: bold;
   letter-spacing: 1px;
   border-radius: 5px;
+}
+.buttons_line {
+  background-color: #fff;
+  color: #0a5aaf;
+  font-weight: bold;
+  border: 2px solid #0a5aaf;
 }
 .w100 {
   width: 100%;
