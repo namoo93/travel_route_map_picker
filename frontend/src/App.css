@@ -156,7 +156,6 @@
   width: calc(100% - 10px);
   text-align: left;
   display: inline-block;
-  padding: 5px;
   border-bottom: 1px solid #0a5aaf;
   cursor: pointer;
 }
@@ -173,6 +172,7 @@
 .select_option > .place_name {
   font-size: 14px;
   font-weight: bold;
+  padding-top: 5px;
 }
 .select_option > .category_name {
   font-size: 11px;
@@ -180,7 +180,9 @@
 }
 
 .select_option > .place_url {
+  display: inline-block;
   color: #0475f4;
+  padding-bottom: 5px;
 }
 
 .input_wrap .input_label {

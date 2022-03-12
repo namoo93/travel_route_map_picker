@@ -12,12 +12,19 @@ const store = createStore(rootReducer);
 function App() {
   // 리덕스로 뺀뒤 UserMapList 에서 제어
   const [showMap, setShowMap] = useState(true);
+  const [userMapList, setUserMapList] = useState([]);
   useEffect(() => {
     console.log(showMap);
   }, [showMap]);
   return (
     <Provider store={store}>
-      <div className="App">{!showMap ? <Login /> : <MapMain />}</div>
+      <div className="App">
+        {!showMap ? (
+          <Login userMapList={userMapList} setUserMapList={setUserMapList} />
+        ) : (
+          <MapMain userMapList={userMapList} setUserMapList={setUserMapList} />
+        )}
+      </div>
     </Provider>
   );
 }

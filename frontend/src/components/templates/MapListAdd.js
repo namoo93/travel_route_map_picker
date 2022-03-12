@@ -12,11 +12,12 @@ const MapListAdd = ({ placeInfoList, setPlaceInfoList, setMemoAddModal, setMemoC
   //모든 필수 데이터 입력시 버튼 활성화
   const [disabled, setDisabled] = useState(true);
   //마커의 미리보기 데이터 셋팅 setMemoContents() // 배열안의 객체로 설정
+  const [isActive, setIsActive] = useState(null); //토글 틀래스
 
   useEffect(() => {
     //저장 버튼 활성화
     if (memoText.length && titleText.length) setDisabled(false);
-  }, [images, memoText, titleText, placeInfoList]);
+  }, [images, memoText, titleText, placeInfoList, isActive]);
 
   const onSubmitAddMemo = (e) => {
     e.preventDefault();
@@ -66,8 +67,10 @@ const MapListAdd = ({ placeInfoList, setPlaceInfoList, setMemoAddModal, setMemoC
     setSelectModal(false);
   };
 
-  const onClickSelectOption = (e) => {
-    const target = e.target;
+  const onClickSelectOption = (e, idx) => {
+    const li = e.target.parentNode;
+    console.log(idx, li.id.includes(idx));
+    if (li.id.includes(idx)) setIsActive(idx);
   };
 
   return (
@@ -136,9 +139,9 @@ const MapListAdd = ({ placeInfoList, setPlaceInfoList, setMemoAddModal, setMemoC
                         {placeInfoList.map((cur, idx) => (
                           <li
                             key={idx}
-                            className="select_option"
-                            name={`select_place_${idx}`}
-                            onClick={onClickSelectOption}
+                            className={`select_option ${+(isActive === idx ? 'on' : null)}`}
+                            id={`select_place_${idx}`}
+                            onClick={(e) => onClickSelectOption(e, idx)}
                           >
                             <span className="place_name">{cur.place_name}</span>
                             <span className="category_name">{cur.category_name}</span>

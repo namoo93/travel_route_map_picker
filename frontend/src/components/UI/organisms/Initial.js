@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 
-const Initial = ({ setInitialModal }) => {
+const Initial = ({ setInitialModal, setUserMapList }) => {
   const [titleValue, setTitleValue] = useState('');
   const intialRef = useRef(null);
   const onSubmitTitle = async (e) => {

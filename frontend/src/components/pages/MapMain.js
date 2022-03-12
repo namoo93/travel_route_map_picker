@@ -19,7 +19,7 @@ const markerOptions = {
   image: new window.kakao.maps.MarkerImage('/img/marker.png', new window.kakao.maps.Size(8, 8)),
 };
 
-const MapMain = () => {
+const MapMain = (userMapList, setUserMapList) => {
   //모달
   const [initialModal, setInitialModal] = useState(true);
   const [memoAddModal, setMemoAddModal] = useState(false);
@@ -96,7 +96,7 @@ const MapMain = () => {
       <MapList />
       {/* search box & 지도 이름 */}
       <div className="map_top">
-        <strong className="map_title">01번 지도입니다.{}</strong>
+        {/* <strong className="map_title">{userMapList}</strong> */}
         <div className="search_box">
           <input type="search" className="search_bar" />
           <button type="button" className="buttons">
@@ -109,7 +109,7 @@ const MapMain = () => {
       {/* 최초 리스트 이름 생성 모달 */}
       {initialModal && (
         <ModalPortal>
-          <Initial setInitialModal={setInitialModal} />
+          <Initial setInitialModal={setInitialModal} setUserMapList={setUserMapList} />
         </ModalPortal>
       )}
 
